@@ -1,5 +1,7 @@
+import PDFViewer from "components/PDFViewer";
+
 const Container = () => {
-  return <>Container</>;
+  return <PDFViewer />;
 };
 
 export default Container;
