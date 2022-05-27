@@ -2,6 +2,7 @@ import { pdfjs } from "react-pdf";
 
 import Provider from "./context";
 
+import Controller from "./Controller";
 import View from "./View";
 
 import PDFViewerStyle from "styles/PDFViewerStyle";
@@ -12,6 +13,7 @@ const PDFViewer = () => {
   return (
     <PDFViewerStyle onContextMenu={(e) => e.preventDefault()}>
       <Provider>
+        <Controller />
         <View />
       </Provider>
     </PDFViewerStyle>

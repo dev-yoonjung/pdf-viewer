@@ -4,11 +4,31 @@ import { Context } from "./context";
 import { Document, Page } from "react-pdf";
 import file from "file/test_pdf.pdf";
 
-function View() {
+const View = () => {
   const [state, dispatch] = useContext(Context);
 
+  const handleScroll = (e) => {
+    let current = 1;
+
+    const { scrollTop } = e.target;
+    const heights = state.get("heights");
+    const scale = state.get("scale");
+    for (let i = 0; i < heights.length; i++) {
+      const { start, end } = heights[i];
+      const top = start * scale;
+      const bottom = end * scale;
+      if (scrollTop >= top && scrollTop < bottom) {
+        break;
+      }
+
+      current++;
+    }
+
+    dispatch({ type: "SET_CURRENT", payload: current });
+  };
+
   return (
-    <div className="document-container">
+    <section className="document-container" onScroll={handleScroll}>
       <Document
         file={file}
         onLoadSuccess={(document) =>
@@ -28,8 +48,8 @@ function View() {
           })}
         </div>
       </Document>
-    </div>
+    </section>
   );
-}
+};
 
 export default View;

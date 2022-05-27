@@ -18,6 +18,18 @@ function reducer(state, action) {
         .set("document", document)
         .set("heights", heights)
         .set("current", 1);
+    case "SET_CURRENT":
+      return state.set("current", payload);
+    case "SET_SCALE":
+      return state.set("scale", payload);
+    case "SET_FIT":
+      return state.set("fit", payload);
+    case "ZOOM_IN":
+      return state.set("scale", state.get("scale") + 0.1);
+    case "ZOOM_OUT":
+      return state.set("scale", Math.max(0.1, state.get("scale") - 0.1));
+    default:
+      return state;
   }
 }
 
