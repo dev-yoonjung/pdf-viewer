@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { Context } from "./context";
 
 import { Document, Page } from "react-pdf";
+
+import Error from "./Error";
+
 import file from "file/test_pdf.pdf";
 
 const View = () => {
@@ -34,6 +37,7 @@ const View = () => {
         onLoadSuccess={(document) =>
           dispatch({ type: "DOCUMENT_LOAD", payload: document })
         }
+        error={<Error />}
       >
         <div className="page-list">
           {Array.from(new Array(state.get("document").numPages), (_, index) => {

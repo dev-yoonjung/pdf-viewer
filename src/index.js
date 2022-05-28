@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Container from "containers";
 
+import "antd/dist/antd.min.css";
 import GlobalStyle from "./styles/GlobalStyle";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

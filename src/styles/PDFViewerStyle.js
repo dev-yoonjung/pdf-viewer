@@ -1,22 +1,6 @@
 import styled from "styled-components";
 
 const PDFViewerStyle = styled.div`
-  .react-pdf__Page {
-    &__textContent {
-      border: 1px solid darkgrey;
-      box-shadow: 5px 5px 5px 1px #ccc;
-      border-radius: 5px;
-    }
-
-    &__canvas {
-      margin: 0 auto;
-    }
-
-    &__textContent {
-      visibility: hidden;
-    }
-  }
-
   .pdf-controller-container {
     display: flex;
     justify-content: center;
@@ -48,6 +32,7 @@ const PDFViewerStyle = styled.div`
         width: 64px;
         height: 20px;
         text-align: center;
+        background-color: #191b1c;
         color: #ffffff;
         border: none;
         padding: 4px;
@@ -88,7 +73,6 @@ const PDFViewerStyle = styled.div`
       color: #fff;
 
       &:hover {
-        border-color: none;
         color: #0041b3;
       }
     }
@@ -126,13 +110,25 @@ const PDFViewerStyle = styled.div`
     }
   }
 
-  .page_list {
+  .page-list {
     & > div:not(:last-child) {
       margin-bottom: 15px;
     }
 
     .react-pdf__Page {
-      display: inline-block;
+      &__textContent {
+        border: 1px solid darkgrey;
+        box-shadow: 5px 5px 5px 1px #ccc;
+        border-radius: 5px;
+      }
+
+      &__canvas {
+        margin: 0 auto;
+      }
+
+      &__textContent {
+        visibility: hidden;
+      }
     }
   }
 `;
