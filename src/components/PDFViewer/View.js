@@ -5,9 +5,7 @@ import { Document, Page } from "react-pdf";
 
 import Error from "./Error";
 
-import file from "file/test_pdf.pdf";
-
-const View = () => {
+const View = ({ file }) => {
   const [state, dispatch] = useContext(Context);
 
   const handleScroll = (e) => {
