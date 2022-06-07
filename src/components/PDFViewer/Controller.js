@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from "./context";
+import * as actionTypes from "./context/constants";
 
 import { Button } from "antd";
 import NumericInput from "components/NumericInput";
@@ -44,8 +45,8 @@ const Controller = () => {
         const next = fit === "page" ? "width" : "page";
         const nextScale = next === "width" ? scaleX : scaleY;
 
-        dispatch({ type: "SET_FIT", payload: next });
-        dispatch({ type: "SET_SCALE", payload: nextScale });
+        dispatch({ type: actionTypes.SET_FIT, payload: next });
+        dispatch({ type: actionTypes.SET_SCALE, payload: nextScale });
       });
   };
 
@@ -64,7 +65,7 @@ const Controller = () => {
     }
 
     moveToTop(value);
-    dispatch({ type: "SET_CURRENT", payload: value });
+    dispatch({ type: actionTypes.SET_CURRENT, payload: value });
   };
 
   const moveToTop = (page) => {
@@ -92,7 +93,10 @@ const Controller = () => {
         <span className="separator">/</span>
         {state.get("document").numPages}
       </div>
-      <Button title="Zoom In" onClick={() => dispatch({ type: "ZOOM_IN" })}>
+      <Button
+        title="Zoom In"
+        onClick={() => dispatch({ type: actionTypes.ZOOM_IN })}
+      >
         <span>
           <PlusOutlined />
         </span>
@@ -103,12 +107,15 @@ const Controller = () => {
           value={scaleValue}
           onChange={setScaleValue}
           onPressEnter={() =>
-            dispatch({ type: "SET_SCALE", payload: scaleValue / 100 })
+            dispatch({ type: actionTypes.SET_SCALE, payload: scaleValue / 100 })
           }
           suffix="%"
         />
       </div>
-      <Button title="Zoom Out" onClick={() => dispatch({ type: "ZOOM_OUT" })}>
+      <Button
+        title="Zoom Out"
+        onClick={() => dispatch({ type: actionTypes.ZOOM_OUT })}
+      >
         <span>
           <MinusOutlined />
         </span>

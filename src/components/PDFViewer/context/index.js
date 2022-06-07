@@ -1,6 +1,8 @@
 import { createContext, useReducer } from "react";
 import { fromJS } from "immutable";
 
+import * as actionTypes from "./constants";
+
 const initialState = fromJS({
   document: {},
   heights: [],
@@ -12,21 +14,21 @@ const initialState = fromJS({
 function reducer(state, action) {
   const { type, payload } = action;
   switch (type) {
-    case "DOCUMENT_LOAD":
+    case actionTypes.DOCUMENT_LOAD:
       const { document, heights } = documentLoad(payload);
       return state
         .set("document", document)
         .set("heights", heights)
         .set("current", 1);
-    case "SET_CURRENT":
+    case actionTypes.SET_CURRENT:
       return state.set("current", payload);
-    case "SET_SCALE":
+    case actionTypes.SET_SCALE:
       return state.set("scale", payload);
-    case "SET_FIT":
+    case actionTypes.SET_FIT:
       return state.set("fit", payload);
-    case "ZOOM_IN":
+    case actionTypes.ZOOM_IN:
       return state.set("scale", state.get("scale") + 0.1);
-    case "ZOOM_OUT":
+    case actionTypes.ZOOM_OUT:
       return state.set("scale", Math.max(0.1, state.get("scale") - 0.1));
     default:
       return state;

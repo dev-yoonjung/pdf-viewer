@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Context } from "./context";
+import * as actionTypes from "./context/constants";
 
 import { Document, Page } from "react-pdf";
 
@@ -25,7 +26,7 @@ const View = ({ file }) => {
       current++;
     }
 
-    dispatch({ type: "SET_CURRENT", payload: current });
+    dispatch({ type: actionTypes.SET_CURRENT, payload: current });
   };
 
   return (
@@ -33,7 +34,7 @@ const View = ({ file }) => {
       <Document
         file={file}
         onLoadSuccess={(document) =>
-          dispatch({ type: "DOCUMENT_LOAD", payload: document })
+          dispatch({ type: actionTypes.DOCUMENT_LOAD, payload: document })
         }
         error={<Error />}
       >
